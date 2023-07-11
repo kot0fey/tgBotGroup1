@@ -15,6 +15,7 @@ weather_button = types.KeyboardButton('🌤Погода')
 calculator_button = types.KeyboardButton('🧮Калькулятор')
 mems_button = types.KeyboardButton('🤣IT мемы')
 keyboard.add(translate_button, weather_button, calculator_button, mems_button)
+translator = Translator(service_urls=['translate.google.com'])
 
 # Обработчик команды /start
 @bot.message_handler(commands=['start'])
@@ -59,8 +60,7 @@ def translate_text(message):
 def process_translation(message):
     if message.text:
         text_to_translate = message.text
-        translator = Translator(service_urls=['translate.google.com'])
-        translation = translator.translate(text_to_translate, src='en', dest='ru')
+        translation = translator.translate(text_to_translate, dest='ru')
         bot.send_message(message.chat.id, f'Перевод:\n{translation.text}')
     else:
         bot.send_message(message.chat.id, 'Пожалуйста, введите текст для перевода.')
@@ -82,7 +82,7 @@ def get_weather(message):
         temperature = weather_data['main']['temp']
         pressure = weather_data['main']['pressure']
         wind_speed = weather_data['wind']['speed']
-        weather_status = weather_data['weather'][0]['description']
+        weather_status = translator.translate(weather_data['weather'][0]['description'], src='en', dest='ru').text
         response = f"Погода в {city}:\n"
         response += f"Температура: {temperature} °C\n"
         response += f"Давление: {pressure} hPa\n"
@@ -126,7 +126,7 @@ def calculate_expression(message):
         bot.send_message(message.chat.id, 'Ошибка: Деление на ноль')
         show_buttons(message)
     except Exception as e:
-        bot.send_message(message.chat.id, f'Ошибка при вычислении выражения: {str(e)}')
+        bot.send_message(message.chat.id, f'Ошибка при вычислении выражения')
         show_buttons(message)
 
 
