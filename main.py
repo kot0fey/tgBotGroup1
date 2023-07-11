@@ -117,12 +117,36 @@ def fetch_weather(city):
 
 # Обработчик выбора "Калькулятор"
 @bot.message_handler(func=lambda message: message.text == '🧮Калькулятор')
+def handle_calculator(message):
+    hide_buttons(message)
+    bot.send_message(message.chat.id, 'Введите математическое выражение:')
+    bot.register_next_step_handler(message, calculate_expression)
 
+
+def calculate_expression(message):
+    expression = message.text
+    try:
+        result = eval(expression)
+        if isinstance(result, (int, float)) and result == float('inf'):
+            raise ZeroDivisionError('Деление на ноль')
+        bot.send_message(message.chat.id, f'Результат: {result}')
+        show_buttons(message)
+    except ZeroDivisionError:
+        bot.send_message(message.chat.id, 'Ошибка: Деление на ноль')
+        show_buttons(message)
+    except Exception as e:
+        bot.send_message(message.chat.id, f'Ошибка при вычислении выражения: {str(e)}')
+        show_buttons(message)
 
 
 # Обработчик выбора "🤣IT мемы"
 @bot.message_handler(func=lambda message: message.text == '🤣IT мемы')
-
+def send_meme(message):
+    public = random.randint(100, 303)
+    chat_id = message.chat.id
+    img_url = f'https://t.me/itshnik_mem/{public}'
+    request_url = f'{URL}{TOKEN}/sendPhoto?chat_id={chat_id}&photo={img_url}'
+    response = requests.get(request_url)
 
 
 # Обработчик неизвестной команды
