@@ -43,12 +43,6 @@ def info(message):
                      parse_mode='HTML')
 
 
-# Функция для скрытия кнопок
-def hide_buttons(message):
-    bot.send_chat_action(message.chat.id, 'typing')
-    bot.send_message(message.chat.id, 'Обработка...', reply_markup=types.ReplyKeyboardRemove())
-
-
 # Функция для отображения кнопок
 def show_buttons(message):
     bot.send_chat_action(message.chat.id, 'typing')
@@ -58,8 +52,7 @@ def show_buttons(message):
 # Обработчик выбора "Перевести"
 @bot.message_handler(func=lambda message: message.text == '🈯Перевести')
 def translate_text(message):
-    hide_buttons(message)
-    bot.send_message(message.chat.id, 'Введите текст, который нужно перевести:')
+    bot.send_message(message.chat.id, 'Введите текст, который нужно перевести:', reply_markup=types.ReplyKeyboardRemove())
     bot.register_next_step_handler(message, process_translation)
 
 
@@ -77,8 +70,7 @@ def process_translation(message):
 # Обработчик выбора "Погода"
 @bot.message_handler(func=lambda message: message.text == '🌤Погода')
 def handle_weather(message):
-    hide_buttons(message)
-    bot.send_message(message.chat.id, 'Введите название города:')
+    bot.send_message(message.chat.id, 'Введите название города:', reply_markup=types.ReplyKeyboardRemove())
     bot.register_next_step_handler(message, get_weather)
 
 
@@ -118,8 +110,7 @@ def fetch_weather(city):
 # Обработчик выбора "Калькулятор"
 @bot.message_handler(func=lambda message: message.text == '🧮Калькулятор')
 def handle_calculator(message):
-    hide_buttons(message)
-    bot.send_message(message.chat.id, 'Введите математическое выражение:')
+    bot.send_message(message.chat.id, 'Введите математическое выражение:', reply_markup=types.ReplyKeyboardRemove())
     bot.register_next_step_handler(message, calculate_expression)
 
 
