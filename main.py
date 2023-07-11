@@ -1,7 +1,6 @@
-import random
 import telebot
 from telebot import types
-import requests
+
 
 TOKEN = '6340850754:AAHSk0R4RTBJM2Wh4tnCAIcJ_7Fy5ksvkwA'
 bot = telebot.TeleBot(TOKEN)
