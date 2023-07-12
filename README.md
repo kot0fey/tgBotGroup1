@@ -1,7 +1,7 @@
 # NonchBot
 ![logo](https://i.imgur.com/CXYGLSB.jpeg)
 
-Этот телеграм-бот разработан в рамках учебной практики в [СПГУТ](www.sut.ru)
+Этот телеграм-бот разработан в рамках учебной практики в [СПБГУТ](www.sut.ru)
 
 
 ## Функционал
@@ -25,9 +25,6 @@
 Автоматически определяет язык и переводит введенный текст на русский
 ```
 
-## Руководство пользователя
-
-
 ## Ограничения
 
 Запросы о состоянии погоды:
@@ -43,7 +40,7 @@
 ## Инструкция по установке
 
 ### Для работы приложения необходимо установить:
-###### Python 3
+###### Python 3.8
 #### Библиотеки:
 ###### googletrans
 ###### telebot
@@ -53,23 +50,19 @@
 ### Installing and launching a web application
 1) Скопировать бота из данного репозитория
 ```
-git clone https://github.com/kiruxaspb/NFTickets.git
+https://github.com/kot0fey/tgBotGroup1.git
 ```
-2) Go to the source code folder of the application:
+2) Скачать и установить среду разработки Pycharm
 ```
-cd /NFTickets/bootstrap_app
+https://www.jetbrains.com/pycharm/download/?ysclid=ljyyg75wjp162231770
 ```
-3) Install all the dependencies for the application to work:
-```
-npm i
-```
-4) Launch the application
-```
-npm start
-```
-## Стэк технологий
+3) Установить Python 3.8 и все необходимые библиотеки
 
-1. Python
+4) Запустить бота в Pycharm
+
+## Стек технологий
+
+1. Python 3.8
 2. Pycharm
 3. Git
 4. APIs
