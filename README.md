@@ -40,14 +40,18 @@
 ## Инструкция по установке
 
 ### Для работы приложения необходимо установить:
-###### Python 3.8
+```
+Python 3.8
+```
 #### Библиотеки:
-###### googletrans
-###### telebot
-###### random
-###### request
+```
+googletrans
+telebot
+random
+request
+```
 
-### Installing and launching a web application
+
 1) Скопировать бота из данного репозитория
 ```
 https://github.com/kot0fey/tgBotGroup1.git
