@@ -20,6 +20,7 @@ translator = Translator(service_urls=['translate.google.com'])
 # Обработчик команды /start
 @bot.message_handler(commands=['start'])
 def handle_start(message):
+    bot.send_message(message.chat.id, 'Данный бот разработан командой Nonch')
     bot.send_message(message.chat.id,
                      f'<b>Здравствуйте, {message.from_user.first_name}!</b> \n Представляю вам универсального '
                      f'Telegram-бота <b>NonchBot</b>, который объединяет несколько полезных '
